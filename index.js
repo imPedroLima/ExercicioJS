@@ -46,33 +46,57 @@ function addPacients(){
 }
 
 function removePacients(){
-    for(let i = 0; i < count; i++){
-        const children = list.children[i].textContent
-        list.children[i].textContent = children.replace(/^\d/, `${i}`)
+    try{
+        if(!(pacients.length === 0)){
+            for(let i = 0; i < count; i++){
+            const children = list.children[i].textContent
+            list.children[i].textContent = children.replace(/^\d/, `${i}`)
+            }
+            const stringFormat = list.children[0].textContent
+            alert(`O paciente ${stringFormat.replace(/\d\W/g, '')} foi consultado(a)`)
+            list.removeChild(list.children[0]) 
+            pacients.shift()
+            console.log(pacients)
+            count--
+        } else {
+            throw new Error('Nenhum paciente na Fila!')
+        }
+    }catch(e){
+        alert(e)
     }
-    const stringFormat = list.children[0].textContent
-    alert(`O paciente ${stringFormat.replace(/\d\W/g, '')} foi consultado`)
-    list.removeChild(list.children[0]) 
-    pacients.shift()
-    count--
+    
 }
 
 addBtn.addEventListener("click", (ev)=>{
     ev.preventDefault()
-    count++
-    const id = `id-${count}`
-    const label = createLabel(container,id,"Digite o Nome do Paciente")
-    const input = createInput(container, "text", id, id)
-    input.focus()
-    const btn = createButton(container, "button", `add-${count}`, "Adicionar")
+        count++
+        const id = `id-${count}`
+        const label = createLabel(container,id,"Digite o Nome do Paciente")
+        const input = createInput(container, "text", id, id)
+        input.focus()
+        const btn = createButton(container, "button", `add-${count}`, "Adicionar")
 
-    btn.addEventListener("click", (ev)=>{
-        ev.preventDefault()
-        addPacients()
-        container.removeChild(label)
-        container.removeChild(input)
-        container.removeChild(btn)
-    })
+        btn.addEventListener("click", (ev)=>{
+            try{
+                if(!(input.value === '')){
+                    ev.preventDefault()
+                    addPacients()
+                    container.removeChild(label)
+                    container.removeChild(input)
+                    container.removeChild(btn)
+                } else {
+                    count--
+                    container.removeChild(label)
+                    container.removeChild(input)
+                    container.removeChild(btn)
+                    throw new Error('Você não pode adicionar um paciente sem o nome dele!')
+                }
+            }catch(e){
+                alert(e)
+            }
+            
+        })
+    
 })
 
 removeBtn.addEventListener("click", removePacients)
