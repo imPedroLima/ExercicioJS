@@ -5,6 +5,8 @@ const list = document.querySelector('.patients-list')
 let pacients = []
 let count = 0
 
+// Precisa colocar os números e atualizar eles ( 1º, 2º, etc)
+
 function createLabel(parent, htmlFor, textContent){
     const label = document.createElement("label")
     label.htmlFor = htmlFor
@@ -33,7 +35,7 @@ function createButton(parent,type, id,textContent){
 
 function createLi(parent, textContent){
     const li = document.createElement('li')
-    li.textContent = textContent
+    li.textContent = `${count}º ${textContent}`
     parent.appendChild(li)
     return li
 }
@@ -59,7 +61,6 @@ addBtn.addEventListener("click", (ev)=>{
     btn.addEventListener("click", (ev)=>{
         ev.preventDefault()
         addPacients()
-                // Removendo os elementos corretamente
         container.removeChild(label)
         container.removeChild(input)
         container.removeChild(btn)
