@@ -5,8 +5,6 @@ const list = document.querySelector('.patients-list')
 let pacients = []
 let count = 0
 
-// Precisa colocar os números e atualizar eles ( 1º, 2º, etc)
-
 function createLabel(parent, htmlFor, textContent){
     const label = document.createElement("label")
     label.htmlFor = htmlFor
@@ -44,10 +42,19 @@ function addPacients(){
     const name = document.getElementById(`id-${count}`).value
     pacients.push(name)
     createLi(list, name)
+    console.log(pacients)
 }
+
 function removePacients(){
+    for(let i = 0; i < count; i++){
+        const children = list.children[i].textContent
+        list.children[i].textContent = children.replace(/^\d/, `${i}`)
+    }
+    const stringFormat = list.children[0].textContent
+    alert(`O paciente ${stringFormat.replace(/\d\W/g, '')} foi consultado`)
     list.removeChild(list.children[0]) 
     pacients.shift()
+    count--
 }
 
 addBtn.addEventListener("click", (ev)=>{
@@ -56,6 +63,7 @@ addBtn.addEventListener("click", (ev)=>{
     const id = `id-${count}`
     const label = createLabel(container,id,"Digite o Nome do Paciente")
     const input = createInput(container, "text", id, id)
+    input.focus()
     const btn = createButton(container, "button", `add-${count}`, "Adicionar")
 
     btn.addEventListener("click", (ev)=>{
