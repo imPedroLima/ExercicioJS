@@ -1,9 +1,25 @@
-# Exercício Javascript
-## Fila de Espera
-Escreva um programa em javascript para simular uma fila de espera em um consultório médico. O programa deve iniciar mostrando na tela um menu interativo contendo a lista de todos os pacientes esperando em ordem mostrando sua posição ao lado do nome (ex.: 1º Matheus, 2º Marcos, etc). O menu também deve permitir escolher entre as opções de “Novo paciente”, para adicionar um novo paciente ao fim da fila (pedindo o nome do paciente), “Consultar paciente”, que retira o primeiro paciente da fila e mostra na tela o nome do paciente consultado, e “Sair”. O programa só deve ser encerrado ao escolher a opção de “Sair”, caso contrário deve voltar ao menu.
-## Atualizações
-Tomei a liberdade de modificar o exercício, expandi o projeto adicionando manipulação com o DOM
-# Tecnologias Utilizadas
-- HTML
-- CSS
-- JavaScript
+# 🏥 Fila de Espera – Consultório Médico
+
+Este projeto é uma simulação de uma **fila de espera** para um consultório médico, desenvolvida com foco em praticar **JavaScript**, além de manipulação da **DOM** com **HTML** e **CSS**.
+
+## ✨ Funcionalidades
+
+- Exibe dinamicamente a **lista de pacientes na fila**, com sua **posição atual**.
+- Permite:
+  - ➕ **Adicionar um novo paciente** ao final da fila.
+  - ✅ **Consultar o próximo paciente**, removendo-o da fila e exibindo seu nome.
+- Atualização imediata da interface a cada ação.
+
+## 💡 Atualizações do Exercício Original
+
+O exercício foi originalmente proposto para ser feito com `prompt()` e `alert()`. No entanto, **decidi expandi-lo**, adicionando:
+
+- Interface interativa com **HTML e CSS**.
+- Manipulação de elementos com **JavaScript e DOM API**.
+- Maior controle visual da fila e interação com o usuário.
+
+## 🛠️ Tecnologias Utilizadas
+
+- **HTML** – estrutura da página.
+- **CSS** – estilização da interface.
+- **JavaScript** – lógica de fila, manipulação DOM e interatividade.
